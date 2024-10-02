@@ -10,23 +10,20 @@
 <?php $component->withAttributes([]); ?>
    <?php $__env->slot('title', null, []); ?> <?php echo e($title); ?> <?php $__env->endSlot(); ?>
 
+  <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>    
   <article class="py-8 max-w-screen-md border-b border-gray-300">
-    <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Article 1</h2>
+    <a href="/posts/<?php echo e($post['id']); ?>" class="hover:underline">
+    <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900"><?php echo e($post['title']); ?></h2>
+  </a>
     <div class="text-base text-gray-500">
-      <a href="#">Amirah Maisara</a> | 15 November 2024 
+      <a href="#"><?php echo e($post['author']); ?></a> | 15 November 2024 
     </div>
-   <p class="my-4 font-light">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloremque possimus, recusandae molestias animi fuga sunt ut amet illo neque, quo ea velit, at iure culpa enim perferendis ipsum necessitatibus.</p>
-   <a href="" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
+   <p class="my-4 font-light"><?php echo e(Str::limit($post['body'], 100)); ?></p>
+   <a href="/posts/<?php echo e($post['id']); ?>" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
   </article>
 
-  <article class="py-8 max-w-screen-md border-b border-gray-300">
-    <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">Article 2</h2>
-    <div class="text-base text-gray-500">
-      <a href="#">Amirah Maisara</a> | 31 December 2024 
-    </div>
-   <p class="my-4 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque asperiores illo laboriosam. Labore, ipsam ex voluptatibus doloribus temporibus doloremque unde eos quia esse modi at voluptate, ipsa delectus nisi dignissimos!</p>
-   <a href="" class="font-medium text-blue-500 hover:underline">Read more &raquo;</a>
-  </article>
+  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal1f9e5f64f242295036c059d9dc1c375c)): ?>
@@ -36,4 +33,4 @@
 <?php if (isset($__componentOriginal1f9e5f64f242295036c059d9dc1c375c)): ?>
 <?php $component = $__componentOriginal1f9e5f64f242295036c059d9dc1c375c; ?>
 <?php unset($__componentOriginal1f9e5f64f242295036c059d9dc1c375c); ?>
-<?php endif; ?><?php /**PATH C:\Users\amira\Herd\laravel12\resources\views/blog.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH C:\Users\amira\Herd\laravel12\resources\views/posts.blade.php ENDPATH**/ ?>
